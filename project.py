@@ -5,7 +5,7 @@ def load_data():
     with open('data.json') as UserData:
         data = json.load(UserData)
         return data
-def UserData():
+def GetUserData():
     User_data = {
             "Name": "",
             "LastName": "",
@@ -56,12 +56,12 @@ def save_to_json(Users):
     x.close()
 
 def main():
-    Users = []
-    Users.insert(0,load_data())
-    J = UserData()
-    Users.append(J)
-    F = (Free_time_calculator())
-    Users.append("You have " + F + " hours of free time")
-    save_to_json(Users)
+    Userinfo = []
+    Userinfo.insert(0,load_data())
+    DataSaver = GetUserData()
+    Userinfo.append(DataSaver)
+    FreeTime = (Free_time_calculator())
+    Userinfo.append("You have " + FreeTime + " hours of free time")
+    save_to_json(Userinfo)
 
 main()
