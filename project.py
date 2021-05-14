@@ -14,12 +14,12 @@ def UserData():
             "Last_login_date":""
             }
 
-    User_data["Name"]= input("Please, type your name ")
-    User_data["LastName"]=input("Please, type your last name ")
-    User_data["Age"]=int(input("Please, insert your age "))
+    User_data["Name"]= input("Please, type your name: ")
+    User_data["LastName"]=input("Please, type your last name: ")
+    User_data["Age"]=int(input("Please, insert your age: "))
     User_data["Occupation"]=input("What is your occupation? ")
     now = datetime.now()
-    User_data["Last_login_date"] = now.strftime("%d / %m / %y")
+    User_data["Last_login_date"] = now.strftime("%d/%m/%y")
     return User_data
  
     
@@ -37,17 +37,17 @@ def Free_time_calculator():
         i= i+1
 
     while(True):
-        answer = input ("Are there any other activities you spend time on dayly? (y,n) ")
-        if (answer == "y"):
+        answer = input ("Are there any other activities you spend time on dayly? (yes/no) ")
+        if (answer == "yes"):
             extra_time = float(input("How many hours a day do you spend on that activity? "))
             sum = sum + extra_time
-        elif (answer == "n"):
+        elif (answer == "no"):
             break
         else:
-            print("Please enter a valid answer (y,n) ")
+            print("Please enter a valid answer (yes/no) ")
 
-    free_time = 24 - sum 
-
+    free_time = str(24 - sum) 
+    print("You have " + free_time + " hours of free time")
     return free_time
 
 def save_to_json(Users):
@@ -57,12 +57,11 @@ def save_to_json(Users):
 
 def main():
     Users = []
-    Users = load_data()
+    Users.insert(0,load_data())
     J = UserData()
     Users.append(J)
+    F = (Free_time_calculator())
+    Users.append("You have " + F + " hours of free time")
     save_to_json(Users)
-
-    F = str(Free_time_calculator())
-    print("You have " + F + " hours of free time")
 
 main()
